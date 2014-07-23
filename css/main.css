@@ -247,7 +247,7 @@ i{
 	color: #02582c;
 	margin-right: 6px;
 	float: left;
-	margin-top: -2px;
+	margin-top: -4px;
 	margin-left: 6px;
 	font-size: 12px;
 }
@@ -501,28 +501,6 @@ font-size: 73%;
 	margin-right: 0;
 }
 
-.settingsLinkView{
-	margin-top:10px !important; 
-	margin-bottom:10px !important; 
-}
-
-.ui-page-theme-a .settingsLinkView .ui-btn{
-	background:url(../images/gradient.png) transparent; 
-	border:1px solid rgb(230, 230, 230);
-	padding:13px;
-	color:#02582c; 
-}
-.settingsLinkView li{
-	margin-bottom:5px !important; 
-}
-
-.settingsLinkView.mobileBoderTouch{
-	margin-left:14px !important;
-	margin-right:14px !important;
-}
-.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
-	background-color:#02582c; 
-}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
     

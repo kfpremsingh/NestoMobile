@@ -4,15 +4,16 @@
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
-<link rel="stylesheet"  href="css/bootstrap.min.css" />
+<link rel="stylesheet"  href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/main.css" />
 <script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jsEvents.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/activate-accordian.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
 </head>
-<body>
+<body onload="fillPointDetails()">
 <div data-role="page" id="home" class="ui-responsive-panel">
   <!-- defaultpanel  -->
    <!-- leftpanel3  -->
@@ -59,16 +60,20 @@
           			<table>
           				<tbody>
 				        <tr>
-				          <td width="55%" class="lessPadLeft"> <label for="textinput-fc">Points Earned</label> <span class="colon">:</span></td>
-				          <td> <label>1000</label></td>
+				          <td width="55%" class="lessPadLeft"> <label for="textinput-fc" >Total Points</label> <span class="colon">:</span></td>
+				          <td> <label id="lblTotalPoints">&nbsp;</label></td>
 				          </tr>
 				        <tr>
-				          <td class="lessPadLeft"> <label for="textinput-fc">Points Redeemed</label> <span class="colon">:</span></td>
-				          <td>  <label>100</label></td>
+				          <td class="lessPadLeft"> <label for="textinput-fc">Redeemed Points</label> <span class="colon">:</span></td>
+				          <td>  <label id="lblRedeemedPoints">100</label></td>
 				          </tr>
 				          <tr>
-				          <td class="lessPadLeft"><label for="textinput-fc">Balance Point</label> <span class="colon">:</span></td>
-				          <td>  <label>900</label></td>
+				          <td class="lessPadLeft"><label for="textinput-fc">Current Balance</label> <span class="colon">:</span></td>
+				          <td>  <label id="lblCurrentBalance">900</label></td>
+				          </tr>
+						  <tr>
+				          <td class="lessPadLeft"><label for="textinput-fc">Redeemable Balance</label> <span class="colon">:</span></td>
+				          <td>  <label id="lblRedeemableBalance">900</label></td>
 				          </tr>
 				          <tr>
 				          <td class="lessPadLeft"><label for="textinput-fc">Eligible Gift</label> <span class="colon">:</span></td>

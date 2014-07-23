@@ -6,29 +6,8 @@
 <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
 <link rel="stylesheet"  href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/main.css" />
-    
-    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
 
-   
-        document.addEventListener("deviceready", onDeviceReady, false);
-    
-            function onDeviceReady() 
-                    {
-                        navigator.splashscreen.hide();
-                        
-                       
-                    }
 
-    </script>
-
-    
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jsEvents.js"></script>
-<!-- <script src="js/cordova.js"></script> -->
-<script src="js/jquery.mobile-1.4.2.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <div data-role="page" id="home" class="ui-responsive-panel">
@@ -88,7 +67,7 @@
                             
                             
                             	<td> <label for="text-basic"><a href="forgetPwd.html" class="link" data-transition="slide" style="font-size:12px;position: relative;left: -4px; ">Forgot Password</a></label></td>
-                                <td class="loginAreaButton" nowrap="nowrap"><a href="profile.html" class="ui-btn ui-btn-inline pad5 logBut" data-transition="slide">Login</a> <a href="activateAccount.html" data-transition="slide">
+                                <td class="loginAreaButton" nowrap="nowrap"><a  class="ui-btn ui-btn-inline pad5 logBut" data-transition="slide" onclick="login()">Login</a> <a href="activateAccount.html" data-transition="slide">
             <button class="ui-btn ui-btn-inline pad5 activateBut">Activate Account</button>
           </a> 
 						          </td>
@@ -126,7 +105,11 @@
   </div>
 </div>
 
-
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jsEvents.js"></script>
+<!-- <script src="js/cordova.js"></script> -->
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 
 
