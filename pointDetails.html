@@ -14,9 +14,7 @@
 <script type="text/javascript" src="js/custom.js"></script>
 </head>
 <body onload="fillPointDetails()">
-<div data-role="page" id="home" class="ui-responsive-panel">
-  <!-- defaultpanel  -->
-   <!-- leftpanel3  -->
+<div data-role="page" id="PointDetails" class="ui-responsive-panel">
   <div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-dismissible="true" data-theme="a">
   	  <img src="images/shadowLight.png" class="shadowHolder" />
    <a  class="pull-left sliderIcon panelCloseIcon" data-rel="close"><img src="images/menu.png" width="37"/></a>
@@ -27,7 +25,7 @@
       </a> <a href="promotions.html" data-transition="slide">
       <li><span class="glyphicon glyphicon-gift"></span> Promotions</li>
       </a> <a href="#" data-transition="slide">
-      <li><span class="glyphicon glyphicon-map-marker"></span> Store Locations</li>
+      <li onclick="onStoreLocationsLoad()"><span class="glyphicon glyphicon-map-marker"></span> Store Locations</li>
       </a> <a href="about.html" data-transition="slide">
       <li><span class="glyphicon glyphicon-info-sign"></span> About Us</li>
       </a> <a href="settings.html" data-transition="slide">
@@ -65,26 +63,26 @@
 				          </tr>
 				        <tr>
 				          <td class="lessPadLeft"> <label for="textinput-fc">Redeemed Points</label> <span class="colon">:</span></td>
-				          <td>  <label id="lblRedeemedPoints">100</label></td>
+				          <td>  <label id="lblRedeemedPoints">&nbsp;</label></td>
 				          </tr>
 				          <tr>
 				          <td class="lessPadLeft"><label for="textinput-fc">Current Balance</label> <span class="colon">:</span></td>
-				          <td>  <label id="lblCurrentBalance">900</label></td>
+				          <td>  <label id="lblCurrentBalance">&nbsp;</label></td>
 				          </tr>
 						  <tr>
 				          <td class="lessPadLeft"><label for="textinput-fc">Redeemable Balance</label> <span class="colon">:</span></td>
-				          <td>  <label id="lblRedeemableBalance">900</label></td>
+				          <td>  <label id="lblRedeemableBalance">&nbsp;</label></td>
 				          </tr>
 				          <tr>
 				          <td class="lessPadLeft"><label for="textinput-fc">Eligible Gift</label> <span class="colon">:</span></td>
-				          <td><label> Royal Ford Kitchen Set</label></td>
+				          <td><label>&nbsp;</label></td>
 				          </tr>
 				        
 				      </tbody>
           			</table>
           		</td>
           		<td width="25%" class="giftHolder">
-          			<img src="images/gift image.png" />
+          			<img id ="giftImage" src="images/gift image.png" alt="giftImage" />
           		</td>
           		</tr>
           		<tr>

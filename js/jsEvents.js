@@ -1,10 +1,36 @@
 $(function () {
-    var all_pages = '#tabArea,#home,#promotions,#gallery';
+    var all_pages = '#home,#forgotPassword,#activateAccount,#PointDetails, #tabArea,#promotions,#gallery';
 
     $(document).off('pageshow', all_pages).on('pageshow', all_pages, function myCallback() {
-        var _thisid = this.id; //this is the loading page id can be used to load scripts or write js/functions conditionally
+        var _thisid = this.id; 
+
 		$.getScript('js/ajaxCall.js');
-		$.getScript('js/login.js');
+		
+		if (_thisid === 'home') {
+			$.getScript('js/login.js');
+		}
+		else if (_thisid === 'forgotPassword')
+		{
+			$.getScript('js/forgotPassword.js');
+		}
+		else if (_thisid === 'activateAccount')
+		{
+			$.getScript('js/activateAccount.js');
+		}
+		else if (_thisid === 'PointDetails')
+		{
+			$.getScript('js/PointDetails.js');
+		}
+		
+		
+		
+		$.getScript('js/profile.js');
+		$.getScript('js/aboutUs.js');
+        $.getScript('js/settings.js');
+		
+		//$.getScript('js/profile.js');
+		//$.getScript('http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/tripledes.js');
+		
 		//$.getScript('js/updateUser.js');
         if (_thisid === 'gallery') {
             $.getScript('js/jquery-1.10.0.min.js', function () {
@@ -192,3 +218,44 @@ function SHA256(s)
 	 var encrypt=binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 	 return encrypt;  
 }  
+
+
+function IsValidInteger(input) {
+    if (input.trim() != '') {
+        if (input.match(/(^[0-9]*$)/i) != null) {
+            return true;
+        }
+        else
+            return false;
+    }
+    else {
+        return false;
+    }
+}
+
+function IsValidString(input) {
+    if (input.trim() != '') {
+        var letters = /^[0-9a-zA-Z!@. &_-]+$/;
+        if (input.match(letters) != null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
+
+function IsValidEmail(mail) {
+    if (mail.trim() != '') {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true)
+        }
+        return (false)
+    }
+    else {
+        return false;
+    }
+}
