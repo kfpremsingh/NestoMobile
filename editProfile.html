@@ -9,12 +9,9 @@
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jsEvents.js"></script>
     <script src="js/jquery.mobile-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-
-
+    <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 </head>
-<body onload="onEditProfileLoad()">
+<body>
 
     <div data-role="page" id="tabArea" class="ui-responsive-panel profile">
         <script src="js/jsEvents.js"></script>
@@ -26,7 +23,7 @@
                 <img src="images/menu.png" width="37" /></a>
             <div class="navigationHolder"></div>
             <ul data-role="listview">
-                <a href="index.html" data-transition="slide">
+                <a onclick="CheckUserExistanceAndNavigate()" data-transition="slide">
                     <li><span class="glyphicon glyphicon-home"></span>Home</li>
                 </a><a href="promotions.html" data-transition="slide">
                     <li><span class="glyphicon glyphicon-gift"></span>Promotions</li>

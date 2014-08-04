@@ -11,8 +11,8 @@
     <script src="js/jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
-<body onload="onLoad()">
-    <div data-role="page" id="home" class="ui-responsive-panel">
+<body >
+    <div data-role="page" id="about" class="ui-responsive-panel">
            <script src="js/jsEvents.js"></script>
         <!-- defaultpanel  -->
         <!-- leftpanel3  -->
@@ -22,7 +22,7 @@
                 <img src="images/menu.png" width="37" /></a>
             <div class="navigationHolder"></div>
             <ul data-role="listview">
-                <a href="index.html" data-transition="slide">
+                <a onclick="CheckUserExistanceAndNavigate()" data-transition="slide">
                     <li><span class="glyphicon glyphicon-home"></span>Home</li>
                 </a><a href="promotions.html" data-transition="slide">
                     <li><span class="glyphicon glyphicon-gift"></span>Promotions</li>

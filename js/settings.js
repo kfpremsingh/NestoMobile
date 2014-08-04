@@ -1,6 +1,9 @@
 var email_pattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 var legalCharacters_pattern = /[a-zA-Z0-9!”$&’@#%=?&quot;().*\+\-,\/;\[\\\]\^_`{|}~ ]+$/;
 
+$(document).ready(function () {
+    onSettingsLoad();
+});
 function onStoreLocationsLoad() {
 
 
@@ -30,8 +33,8 @@ function errorfunction() {
 
 function onSettingsLoad() {
 
-    var UserId = 3;
-    var DeviceId = "DeviceId6";
+    var UserId = localStorage.UserId;
+    var DeviceId = localStorage.DeviceId ;
     var reqData = { "DeviceId": "" + DeviceId + "", "UserId": UserId }
 
     //TODO: Check for the local DB if contents re available.If no details are foung then call tha API
@@ -42,20 +45,30 @@ function onSettingsLoad() {
 function IsGetSettingsContentResponseSuccess(result) {
 
     if (result.ApiResponse.StatusCode == 1) {
-
-        //TODO: Get the app version
-        var version = "V1.0.0";
-        $("#version").text(version);
-
-
-
+              
+        $("#version").text(localStorage.version);
+        
+        $('#select-choice-1').empty();
+    //    localStorage.ServiceAvailableCountries = result.ServiceAvailableCountries;
+        //var defaultSelected = false;
+        //var nowSelected = true;
         $.each(result.ServiceAvailableCountries, function (index, value) {
-            // if (value.CountryId == localStorage.CountryID)
-            $('#select-choice-1').append($('<option/>', {
-                value: value.CountryId,
-                text: value.CountryName
-            }));
+            //if (index == 0) {
+            //    defaultSelected = false;
+            //    nowSelected = true;
+            //}
+            //else {
+            //    defaultSelected = false;
+            //    nowSelected = false;
+            //}
+           // $('#select-choice-1').append(new Option(value.CountryName, value.CountryId, defaultSelected, nowSelected));
+
+            $('#select-choice-1').append(new Option(value.CountryName, value.CountryId));
+           
         });
+       // $('#select-choice-1').find('option:first').attr('selected', 'selected');
+      //  $('#select-choice-1 option:eq(0)').attr('selected', 'selected');
+        //$("#select-choice-1").val(0);
 
         $.each(result.PageDetails, function (index, value) {
             if (value.PageId == 5) {
@@ -69,35 +82,28 @@ function IsGetSettingsContentResponseSuccess(result) {
             }
             else if (value.PageId == 8) {
                 $("#specialRewards").attr('href', value.SeoUrl);
-            }           
+            }
         });
         $("#storeLocations").attr('href', localStorage.StoreDetailsURl);
-
-
-
     }
     else {
         showMessage(result.ApiResponse.Details, 0);
-
     }
 }
 
 
 function changeNotification() {
-
     var checkboxNotifications = $("#checkbox").attr("data-cacheval");
     var Status = "On";
     if (checkboxNotifications == "false") {
         Status = "Off";
     }
-    alert(Status);
-
-    var DeviceId = "DeviceId2";
+   
+    var DeviceId = localStorage.DeviceId;
     var reqData = { "DeviceId": "" + DeviceId + "", "Status": Status }
 
-    //TODO: Check for the local DB if contents re available.If no details are foung then call tha API
+    //TODO: Check for the local DB if contents are available.If no details are foung then call tha API
     ajaxcall("UpdateNotificationStatus", reqData, IsChangeNotificationResponseSuccess, errorfunction);
-
 
 }
 

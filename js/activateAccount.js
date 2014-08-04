@@ -76,14 +76,9 @@ function IsActivateAccountResponseSuccess(result) {
     $('#collapseTwo').css('display', 'none');
 
     if (result.ApiResponse.StatusCode == 1) {
-        showActivateMessage(result.ApiResponse.Details, 1, "activate");
-        $('#collapseTwo').css('display', 'block');
-    }
-    else if (result.ApiResponse.StatusCode == 2) {
-        showActivateMessage(result.ApiResponse.Details, 1, "activate");
+		showActivateMessage(result.ApiResponse.Details, 1, "activate");
         $('#collapseTwo').css('display', 'block');
         $('#collapseOne').css('display', 'none');
-
 
         $("#verify_name").val(result.UserDetail.CustomerName);
         $("#verify_email").val(result.UserDetail.Email);
@@ -103,7 +98,6 @@ function IsActivateAccountResponseSuccess(result) {
 }
 
 function verifyAccount() {
-
     var cardNumber = localStorage.CardNumber;
 	var countryId = localStorage.CountryID;
 	if ($('#verify_name').val() != "") {
@@ -162,13 +156,19 @@ function IsVerifyResponseSuccess(result) {
         localStorage.CountryID = result.UserDetail.CountryID;
         localStorage.LastLoginDate = result.UserDetail.LastLoginDate;
         localStorage.UserId = result.UserDetail.UserId;
-
-  
     
         localStorage.RedeemablePoints = result.UserPointDetail.RedeemablePoints;
         localStorage.RedeemedPoints = result.UserPointDetail.RedeemedPoints;
         localStorage.TotalPoints = result.UserPointDetail.TotalPoints;
 
+		//Save Gift Details in local storage
+		localStorage.GiftStatus = result.EligibleGift.Status;
+		if(localStorage.GiftStatus == "Success")
+		{
+			localStorage.GiftImageURL = result.EligibleGift.GiftImageUrl;
+			localStorage.GiftName = result.EligibleGift.GiftName;
+		}
+		
         window.location = "pointDetails.html";
     }
     else {

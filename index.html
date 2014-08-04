@@ -6,45 +6,80 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
+	
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+	
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/ajaxCall.js"></script>
+	<script src="js/login.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function () {
+			
+			alert(localStorage.CardNumber);
+			if(localStorage.CardNumber != "")
+			{
+				window.location="pointDetails.html";
+			}
+			else
+			{
+				localStorage.DeviceType = 1;
+				var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
+				ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
+			}
+			
+		});
+		
+		function DataFetchedInIndex(result)
+		{
+			if (result.ApiResponse.StatusCode == 1)
+			{
+				if(result.PromotionList != null)
+				{
+					if(result.PromotionList[0] != null)
+						localStorage.PromotionImage1= result.PromotionList[0].PromotionThumbnail;
 
-
-        document.addEventListener("deviceready", onDeviceReady, true);
-
+					if(result.PromotionList[1] != null)
+						localStorage.PromotionImage2 = result.PromotionList[1].PromotionThumbnail;
+				}
+			}
+			$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1);
+			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
+			navigator.splashscreen.hide();
+		}
+		
+		function errorfunction()
+		{
+			navigator.splashscreen.hide();
+		}
+		
+		//document.addEventListener("deviceready", onDeviceReady, true);
         // PhoneGap is ready
-        //
-        function onDeviceReady() {
-            navigator.splashscreen.hide();
-            //var dbShell = window.openDatabase(name, version, display_name, size);
-            var db = window.openDatabase("nesto", "1.0", "Nesto DB", 1000000);
-            //db.transaction(populateDB, errorCB, successCB);
-
-        }        
+        //function onDeviceReady() {
+		
+		//	navigator.splashscreen.hide();
+         //   var db = window.openDatabase("nesto", "1.0", "Nesto DB", 1000000);
+        //}        
         // Populate the database 
         // Transaction error callback
         //
-        function errorCB(tx, err) {
-            alert("Error processing SQL: " + err);
-        }
+        //function errorCB(tx, err) {
+        //    alert("Error processing SQL: " + err);
+        //}
 
         // Transaction success callback
         //
-        function successCB() {
-            alert("success!");
-        }
+        //function successCB() {
+        //    alert("success!");
+        //}
     </script>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/jsEvents.js"></script>
-    <!-- <script src="js/cordova.js"></script> -->
-    <script src="js/jquery.mobile-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/jsEvents.js"></script>
 
 </head>
 <body>
     <div data-role="page" id="home" class="ui-responsive-panel">
-        <!-- defaultpanel  -->
-        <!-- leftpanel3  -->
         <div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-dismissible="true" data-theme="a">
 
             <img src="images/shadowLight.png" class="shadowHolder" />
@@ -52,7 +87,7 @@
                 <img src="images/menu.png" width="37" /></a>
             <div class="navigationHolder"></div>
             <ul data-role="listview">
-                <a href="index.html" data-transition="slide">
+                <a onclick="CheckUserExistanceAndNavigate()" data-transition="slide">
                     <li class="activeLink"><span class="glyphicon glyphicon-home"></span>Home</li>
                 </a><a href="promotions.html" data-transition="slide">
                     <li><span class="glyphicon glyphicon-gift"></span>Promotions</li>
@@ -115,11 +150,11 @@
                         <div class="ui-grid-a">
                             <div class="ui-block-a alignCenter" style="padding-right: 3px;">
                                 <div class="ui-bar ui-bar-a promotionImgHolder"><a href="promotions.html" data-transition="slide">
-                                    <img src="images/1.jpg" /></a> </div>
+                                    <img id="imgPromotionImage1"  /></a> </div>
                             </div>
                             <div class="ui-block-b alignCenter" style="padding-right: 3px; position: relative; left: 3px;">
                                 <div class="ui-bar ui-bar-a promotionImgHolder"><a href="promotions.html" data-transition="slide">
-                                    <img src="images/2.jpg" /></a></div>
+                                    <img  id="imgPromotionImage2"  /></a></div>
                             </div>
                         </div>
                         <!-- /grid-a -->
@@ -129,12 +164,7 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/jsEvents.js"></script>
-    <script src="js/jquery.mobile-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script>	
-	
 //	$(window).bind("pageshow", function() {
 //    $('#txtPassword').val("");
 //		$('#txtCardNumber').val("");

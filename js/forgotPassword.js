@@ -1,3 +1,8 @@
+$(document).ready(function () {
+    $('#firstPromotionImage').attr('src', localStorage.PromotionImage1)
+    $('#secondPromotionImage').attr('src', localStorage.PromotionImage2)
+
+});
 function forgetPassword() {
 
 	var message = ""

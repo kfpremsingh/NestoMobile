@@ -1,3 +1,6 @@
+$(document).ready(function () {
+    onLoad();
+});
 function onLoad() {
 
     var countryId = localStorage.CountryID; 

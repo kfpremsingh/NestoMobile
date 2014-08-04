@@ -1,14 +1,16 @@
-function fillPointDetails()
-{
-	var redeemableBalance = localStorage.RedeemablePoints - localStorage.RedeemedPoints; 
-	if (redeemableBalance < 0)
-		redeemableBalance = 0;
-						
-	//alert(localStorage.CardNumber);
-	$('#lblTotalPoints').text(localStorage.TotalPoints);
-	$('#lblRedeemedPoints').text(localStorage.RedeemedPoints);
-	$('#lblCurrentBalance').text(localStorage.TotalPoints - localStorage.RedeemedPoints );
-	$('#lblRedeemableBalance').text(redeemableBalance);
-	
-	
+function fillPointDetails() {
+    //alert(localStorage.CardNumber);
+    $('#lblTotalPoints').text(localStorage.TotalPoints);
+    $('#lblRedeemedPoints').text(localStorage.RedeemedPoints);
+    $('#lblCurrentBalance').text(localStorage.TotalPoints - localStorage.RedeemedPoints);
+    $('#lblRedeemableBalance').text(localStorage.RedeemablePoints);
+
+    if (localStorage.GiftStatus == "Success") {
+        $('#lblEligibleGiftName').text(localStorage.GiftName);
+        $("#giftImage").attr("src", localStorage.GiftImageURL);
+    }
+    else {
+        $('#lblEligibleGiftName').text(localStorage.GiftStatus);
+    }
 }
+

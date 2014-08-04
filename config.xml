@@ -13,8 +13,6 @@
         <preference name="fullscreen" value="true" /> 
         <preference name="target-device" value="universal" />
         <preference name="deployment-target" value="7.0" />
-        
-        
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="SplashScreenDelay" value="10000"/>
         <gap:plugin name="org.apache.cordova.splashscreen" />
